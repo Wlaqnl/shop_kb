@@ -1,0 +1,27 @@
+<!-- src/main/resources/templates/product/list.html -->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Shipping List</title>
+</head>
+<body>
+<h1>Shipping List</h1>
+<form id="shippingForm" method="post" action="shipping">
+    <input id="id" name="id" value="" type="text">
+    <input id="shippingStatus" name="shippingStatus" value="" type="text">
+    <a href="#" type="button" onclick="submitForm()">입력</a>
+</form>
+<ul>
+    <li th:each="shipping : ${shippingList}">
+        <a th:href="@{/shipping/{id}(id=${shipping.id})}" th:text="${shipping.name}">Shipping Name</a>
+    </li>
+</ul>
+</body>
+</html>
+
+<script>
+    function submitForm() {
+        console.log("HERE");
+        document.getElementById("shippingForm").submit();
+    }
+</script>
